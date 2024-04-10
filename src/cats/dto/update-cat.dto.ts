@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsString } from 'class-validator';
 
-export class CreateCatDto {
+export class UpdateCatDto {
   @ApiProperty()
   @IsString()
   readonly name: string;
