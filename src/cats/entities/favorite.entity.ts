@@ -7,8 +7,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Users } from 'src/users/entities/user.entity';
-import { Cats } from 'src/cats/entities/cat.entity';
+import { Users } from '../../users/entities/user.entity';
+import { Cats } from './cat.entity';
 
 @Entity()
 export class Favorites {

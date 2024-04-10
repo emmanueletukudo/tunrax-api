@@ -5,8 +5,8 @@ import { Cats } from './entities/cat.entity';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
-import { Users } from 'src/users/entities/user.entity';
-import { Favorites } from 'src/cats/entities/favorite.entity';
+import { Users } from '../users/entities/user.entity';
+import { Favorites } from '../cats/entities/favorite.entity';
 
 @Injectable()
 export class CatsService {
