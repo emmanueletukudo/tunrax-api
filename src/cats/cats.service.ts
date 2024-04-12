@@ -22,18 +22,17 @@ export class CatsService {
   }
 
   findOne(id: number): Promise<Cat> {
-    return this.catRepository.findOneBy({ id });
+    return this.catRepository.findOne({ where: { id } });
   }
 
-  create(catDto: CreateCatDto): Promise<Cat> {
+  async create(catDto: CreateCatDto): Promise<Cat> {
     const catEntity = this.catRepository.create(catDto);
-    const newCat = this.catRepository.save(catEntity);
-
+    const newCat = await this.catRepository.save(catEntity);
     return newCat;
   }
 
   async update(id: number, catUpdateDto: UpdateCatDto): Promise<UpdateResult> {
-    const hasCat = this.findOne(id);
+    const hasCat = await this.findOne(id);
     if (!hasCat) throw new Error('Cat not found!');
     return this.catRepository.update(id, catUpdateDto);
   }
@@ -49,8 +48,8 @@ export class CatsService {
       },
       relations: { favorites: true },
     });
-    const cat = await this.catRepository.findOneBy({ id: catId });
 
+    const cat = await this.catRepository.findOne({ where: { id: catId } });
     if (!user || !cat)
       throw new HttpException('User or cat not found', HttpStatus.BAD_REQUEST);
 
